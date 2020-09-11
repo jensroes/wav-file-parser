@@ -1,0 +1,80 @@
+---
+title: 'Comparison: MatLab and Python script'
+author: "Jens Roeser"
+date: "11/09/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = TRUE, message = FALSE)
+options(scipen=999) # turn of scientific notation
+# Load some essential packages
+library(tidyverse)
+```
+
+
+## Summary
+
+The speech on and offsets extracted by the matlab and the python scripts are similar but not identical. The differences are distributed symmatrically around 0 with very few extreme outliers. 
+
+
+## Comparison
+
+```{r}
+d <- read_delim("matpyonsets.txt", delim = "\t")
+```
+
+Number wav files:
+
+```{r}
+nrow(d)
+```
+
+
+Onset latency (matlab script):
+
+
+```{r}
+with(d, summary(mat.onset))
+```
+
+
+Onset latency (python script):
+
+```{r}
+with(d, summary(py.onset))
+```
+
+
+Offset (matlab script):
+
+```{r}
+with(d, summary(mat.offset))
+```
+
+
+Offset (python script):
+
+```{r}
+with(d, summary(py.offset))
+```
+
+\newpage 
+
+
+The difference between the voice onset latencies and voice offsets extracted by the MatLab script and extracted by the Python script is shown in Figure \ref{fig:histogram}.
+
+```{r histogram, fig.cap="\\label{fig:histogram}Histograms of the difference in speech on and offsets.", fig.width=6, fig.height=3}
+d %>% pivot_longer(cols = ends_with("Diff")) %>%
+  mutate(name = recode_factor(name,  onsetDiff = "Voice onsets",
+                                     offDiff = "Voice offsets", .ordered = T)) %>%
+  ggplot(aes(x = value)) +
+  facet_wrap(~name) +
+  geom_histogram() +
+  theme_light() +
+  labs(title = "Difference between MatLab and Python script", subtitle =  "(MatLab - Python)") +
+  theme(strip.text = element_text(hjust = 0),
+        panel.grid = element_blank())
+```
+
+
