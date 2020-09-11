@@ -1,4 +1,4 @@
-# onset-latency-parser
+# wav-file-parser
 
 The Python script olextract.py extracts the voice onset and offset of by-trial wav files. The script is a direct translation of the MatLab-based EPD script published in Bansal, Griffin, and Spieler (2001) and all credit goes to the authors.
 
