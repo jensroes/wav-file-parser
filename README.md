@@ -5,4 +5,4 @@ The Python script olextract.py extracts the voice onset and offset of by-trial w
 The R-markdown file shows a comparison of the outputs from both the Python and the Matlab version of the script.
 
 # References
-Bansal, P., Griffin, Z. M., & Spieler, D. H. (2001).Epd: Matlab Wave FileParsing Software.[On-line].  Retrieved  July  15,  2001,  from  http://oak.psych.gatech.edu/spieler/software.htm
+Bansal, P., Griffin, Z. M., & Spieler, D. H. (2001).Epd: Matlab Wave FileParsing Software.[On-line].  Retrieved  July  15,  2001,  from  http://oak.psych.gatech.edu/~spieler/software.htm
